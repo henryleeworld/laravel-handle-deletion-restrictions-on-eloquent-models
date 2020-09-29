@@ -1,16 +1,17 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use F9Web\LaravelDeletable\Traits\RestrictsDeletion;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use F9Web\LaravelDeletable\Traits\RestrictsDeletion;
 
 class User extends Authenticatable
 {
-    use Notifiable, RestrictsDeletion;
+    use HasFactory, Notifiable, RestrictsDeletion;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +19,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'device',
+        'name',
+        'email',
+        'password',
     ];
 
     /**
@@ -27,7 +30,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
     /**
@@ -41,8 +45,8 @@ class User extends Authenticatable
 
     public function isDeletable() : bool
     {
-        if (Str::endsWith($this->device, '5B:48:6F')) {
-            return $this->denyDeletionReason('網卡實體位址結束為 5B:48:6F 使用者無法刪除。');
+        if (Str::endsWith($this->device, '7A:DE:D2')) {
+            return $this->denyDeletionReason('網卡實體位址結束為 7A:DE:D2 使用者無法刪除。');
         }
         return true;
     }

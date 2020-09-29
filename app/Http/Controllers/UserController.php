@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use F9Web\LaravelDeletable\Exceptions\NoneDeletableModel;
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {
