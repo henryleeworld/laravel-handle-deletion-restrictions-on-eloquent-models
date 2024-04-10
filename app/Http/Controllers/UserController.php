@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use F9Web\LaravelDeletable\Exceptions\NoneDeletableModel;
 use App\Models\User;
+use F9Web\LaravelDeletable\Exceptions\NoneDeletableModel;
 
 class UserController extends Controller
 {
