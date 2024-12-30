@@ -12,10 +12,10 @@ class UserSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         User::factory()
-            ->times(50)
+            ->count(50)
             ->create();
     }
 }

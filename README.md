@@ -1,4 +1,4 @@
-# Laravel 10 處理 Eloquent 模型的刪除檢查條件約束
+# Laravel 11 處理 Eloquent 模型的刪除檢查條件約束
 
 引入 f9webltd 的 laravel-deletable 套件來擴增處理 Eloquent 模型的刪除檢查條件約束，必須要符合限制條件的設定才能刪除。
 
@@ -26,5 +26,5 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/L9X7yfi.png)
+![](https://i.imgur.com/z3b5Jre.png)
 > 刪除時進行限制條件檢查

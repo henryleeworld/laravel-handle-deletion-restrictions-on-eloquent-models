@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
-use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, RestrictsDeletion;
+    use HasFactory, Notifiable, RestrictsDeletion;
 
     /**
      * The attributes that are mass assignable.
@@ -36,19 +35,22 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
     public function isDeletable() : bool
     {
-        if (Str::endsWith($this->device, '47:90:3B')) {
-            return $this->denyDeletionReason('網卡實體位址結束為 47:90:3B 使用者無法刪除。');
+        if (Str::endsWith($this->device, 'F8:C7:77')) {
+            return $this->denyDeletionReason(__('The user with the MAC address ends at :universally_administered_address cannot be deleted.', ['universally_administered_address' => 'F8:C7:77']));
         }
         return true;
     }
