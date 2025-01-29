@@ -7,7 +7,7 @@
     "require": {
         "php": "^8.2",
         "f9webltd/laravel-deletable": "^2.0",
-        "laravel/framework": "^11.2",
+        "laravel/framework": "^11.3",
         "laravel/tinker": "^2.9"
     },
     "require-dev": {
