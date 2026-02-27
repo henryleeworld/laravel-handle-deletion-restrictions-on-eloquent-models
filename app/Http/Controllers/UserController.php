@@ -7,6 +7,9 @@ use F9Web\LaravelDeletable\Exceptions\NoneDeletableModel;
 
 class UserController extends Controller
 {
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy($userId)
     {
         $user = User::findOrFail($userId);

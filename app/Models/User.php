@@ -11,12 +11,13 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable, RestrictsDeletion;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -27,7 +28,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
@@ -49,8 +50,8 @@ class User extends Authenticatable
 
     public function isDeletable() : bool
     {
-        if (Str::endsWith($this->device, 'F8:C7:77')) {
-            return $this->denyDeletionReason(__('The user with the MAC address ends at :universally_administered_address cannot be deleted.', ['universally_administered_address' => 'F8:C7:77']));
+        if (Str::endsWith($this->device, '7A:B4:DA')) {
+            return $this->denyDeletionReason(__('The user with the MAC address ends at :universally_administered_address cannot be deleted.', ['universally_administered_address' => '7A:B4:DA']));
         }
         return true;
     }
